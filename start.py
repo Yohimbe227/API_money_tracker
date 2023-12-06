@@ -30,13 +30,13 @@ payload = {
 output_file("graph.html")
 
 diagram = Plot(
-    date_from=datetime.now() - timedelta(days=30),
+    date_from=datetime.now() - timedelta(days=7),
     date_to=datetime.now(),
     bablo=calendar.formatted_data(),
 )
+ic(diagram.date_from)
 diagram.show_diagram()
-ic(diagram.diagram.y_range.bounds )
-# show(diagram.diagram)
+show(diagram.diagram)
 
 response = requests.post(api_url, json=payload)
 
@@ -44,3 +44,4 @@ if response.status_code == 200:
     print('Сообщение успешно отправлено.')
 else:
     print('Ошибка отправки сообщения:', response.text)
+
