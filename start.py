@@ -25,19 +25,19 @@ chat_id = os.getenv("TELEGRAM_TO")
 api_url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
 payload = {
     'chat_id': chat_id,
-    'text': calendar.formatted_data(),
+    'text': calendar.to_message(),
 }
-ic(payload)
 output_file("graph.html")
 
 diagram = Plot(
-    datetime.now() - timedelta(days=30),
-    datetime.now(),
-    bablo=calendar.formatted_data()[0],
+    date_from=datetime.now() - timedelta(days=30),
+    date_to=datetime.now(),
+    bablo=calendar.formatted_data(),
 )
 diagram.show_diagram()
+ic(diagram.diagram.y_range.bounds )
+# show(diagram.diagram)
 
-show(diagram.diagram)
 response = requests.post(api_url, json=payload)
 
 if response.status_code == 200:

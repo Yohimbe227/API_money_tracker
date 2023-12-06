@@ -32,14 +32,15 @@ class GoogleCalendar:
     def _get_data(self, time_from, time_to) -> list[dict]:
         page_token = None
         my_event = []
+        ic(time_from, time_to)
         while True:
             events = self.service.events().list(
                 calendarId="kamanchi22@gmail.com",
                 singleEvents=True,
                 pageToken=page_token,
                 maxResults=250,
-                timeMin=time_from,
-                timeMax=time_to,
+                timeMin=time_from.isoformat() + "Z",
+                timeMax=time_to.isoformat() + "Z",
                 timeZone="Europe/Moscow",
             ).execute()
             page_token = events.get('nextPageToken')
@@ -52,7 +53,7 @@ class GoogleCalendar:
                 if not is_in_price(name):
                     continue
                 start = event.get('start', {}).get('dateTime', ""),
-                end = event.get('end', {}).get('dateTime', "")[0],
+                end = event.get('end', {}).get('dateTime', ""),
                 data_event = {
                     'summary': name,
                     'start': start,
@@ -68,10 +69,12 @@ class GoogleCalendar:
         many_days = {}
         data = self._get_data(date_from, date_to)
         for value in data:
-            start = datetime.fromisoformat(value.get("start"))
+            start = datetime.fromisoformat(value.get("start", [])[0]).date()
             if start in many_days:
                 many_days[start] += get_cost(value.get("summary"))
             else:
                 many_days[start] = get_cost(value.get("summary"))
+        return many_days
 
-            ic(many_days)
+    def to_message(self):
+        return sum(self.formatted_data().values())

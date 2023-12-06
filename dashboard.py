@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
+from icecream import ic
 
 
 class Plot:
@@ -18,27 +19,29 @@ class Plot:
         self.diagram.y_range.bounds = (0, 6000)
         self.diagram.xaxis.axis_label = 'Дата'
         self.diagram.yaxis.axis_label = 'Доход'
-        self.ys = bablo
-        self.source = ColumnDataSource(data=dict(x=self.get_days(), y=self.ys))
+        self.bablo = bablo
+        # self.source = ColumnDataSource(data=dict(x=list(self.bablo.keys()), y=list(self.bablo.values())))
 
-    def get_days(self):
-        delta = timedelta(days=1)
-        date_from = self.date_from
-        date_to = self.date_to
-        days = []
-        while date_from <= date_to:
-            days.append(date_from)
-            date_from += delta
-        return days
+    def _get_days(self):
+        return [d.isoformat() for d in self.bablo.keys()]
 
-    def update(self, ):
-        self.source = ColumnDataSource(data=dict(x=self.get_days(), y=self.ys))
+    def _get_many(self):
+        return list(self.bablo.values())
+
+    # def update(self, ):
+    #     self.source = ColumnDataSource(data=dict(x=self._get_days(), y=self._get_many()))
 
     def show_diagram(self):
+
+        source = ColumnDataSource(data=dict(x=self._get_days(), y=self._get_many()))
+        ic(source.data)
+        self.diagram.vbar(x='x', top='y', source=source)
+
+        show(self.diagram)
         self.diagram.xaxis.axis_label = 'Дата'
         self.diagram.yaxis.axis_label = 'Доход'
-        self.diagram.vbar(x='x', top='y', width=timedelta(hours=20), color="green",
-                          source=self.source)
+        # self.diagram.vbar(x='x', top='y', width=timedelta(hours=20), color="green",
+        #                   source=source)
         self.diagram.xgrid.grid_line_color = None
 
 
