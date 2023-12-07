@@ -32,7 +32,6 @@ class GoogleCalendar:
     def _get_data(self, time_from, time_to) -> list[dict]:
         page_token = None
         my_event = []
-        ic(time_from, time_to)
         while True:
             events = self.service.events().list(
                 calendarId="kamanchi22@gmail.com",
@@ -68,6 +67,8 @@ class GoogleCalendar:
                        date_to=datetime.now(), ):
         many_days = {}
         data = self._get_data(date_from, date_to)
+        # for value in data:
+        #     if value.
         for value in data:
             start = datetime.fromisoformat(value.get("start", [])[0]).date()
             if start in many_days:

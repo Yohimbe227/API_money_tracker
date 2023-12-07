@@ -70,7 +70,7 @@ def check_tokens(token) -> None:
         token: Токен телеграм бота.
 
     Raises:
-        TokenError: Отстутствует какой либо из необходимых токенов.
+        TokenError: Отсутствует какой-либо из необходимых токенов.
 
     """
     notoken = "TELEGRAM_TOKEN" if token is None else None

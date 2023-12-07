@@ -27,14 +27,12 @@ payload = {
     'chat_id': chat_id,
     'text': calendar.to_message(),
 }
-output_file("graph3.html")
 
 diagram = Plot(
     date_from=datetime.now() - timedelta(days=7),
     date_to=datetime.now(),
     bablo=calendar.formatted_data(),
 )
-ic(diagram.date_from)
 diagram.show_diagram()
 
 response = requests.post(api_url, json=payload)
