@@ -3,6 +3,7 @@ name: calendar_income workflow
 on: [push]
 
 jobs:
+
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     if: ${{ github.ref == 'refs/heads/master' }}
