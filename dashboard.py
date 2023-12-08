@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from bokeh.io import save
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure, output_file
 
 from constants import Constants
 
@@ -17,8 +17,13 @@ class Plot:
         height: Высота диаграммы.
     """
 
-    def __init__(self, date_from: datetime, date_to: datetime,
-                 bablo: dict[datetime, int], height: int = 550, ):
+    def __init__(
+        self,
+        date_from: datetime,
+        date_to: datetime,
+        bablo: dict[datetime, int],
+        height: int = 550,
+    ):
         self.date_from = date_from
         self.date_to = date_to
         self.height = height
@@ -30,9 +35,14 @@ class Plot:
         Returns:
             Список дат.
         """
-        return [str(day.month) + "-" + str(day.day) + " \n" + Constants.WEEKDAYS[
-            day.weekday()] for day in
-                self.bablo.keys()]
+        return [
+            str(day.month)
+            + "-"
+            + str(day.day)
+            + " \n"
+            + Constants.WEEKDAYS[day.weekday()]
+            for day in self.bablo.keys()
+        ]
 
     def _get_many(self):
         """Возвращает список сумм.
@@ -59,7 +69,10 @@ class Plot:
         diagram.title.text_font_size = "20pt"
         diagram.xaxis.axis_label_text_font_size = "16pt"
         diagram.yaxis.axis_label_text_font_size = "16pt"
-        diagram.vbar(x=self._get_days(), top=self._get_many(), width=0.8,
-                     color="green",
-                     )
+        diagram.vbar(
+            x=self._get_days(),
+            top=self._get_many(),
+            width=0.8,
+            color="green",
+        )
         save(diagram)

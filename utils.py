@@ -1,8 +1,6 @@
 import datetime
 import logging
 
-from icecream import ic
-
 from constants import Constants
 from exceptions import TokenError
 
@@ -16,8 +14,8 @@ logger = logging.getLogger(__name__)
 def is_in_price(name: str | None) -> bool:
     """Check if name is in price
 
-        Args:
-            name: Name of event.
+    Args:
+        name: Name of event.
     """
     if name is None:
         return False
@@ -39,20 +37,27 @@ def get_datetime(year: int, month: int, day: int) -> str:
         Время в формате ISO.
 
     """
-    return datetime.datetime(year, month, day,).isoformat() + "Z"
+    return (
+        datetime.datetime(
+            year,
+            month,
+            day,
+        ).isoformat()
+        + "Z"
+    )
 
 
 def get_cost(name: str | None) -> int:
     """Возвращает стоимость события по его имени.
 
-        Args:
-            name: Имя события.
+    Args:
+        name: Имя события.
 
-        Raises:
-            AttributeError: Нет такого клиента в списке.
+    Raises:
+        AttributeError: Нет такого клиента в списке.
 
-        Returns:
-            Стоимость события.
+    Returns:
+        Стоимость события.
 
     """
     if name is None:
