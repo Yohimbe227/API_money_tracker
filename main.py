@@ -18,6 +18,7 @@ class GoogleCalendar:
         ic(PrivateData.FILE_PATH)
         self.service = build("calendar", "v3", credentials=credentials)
         ic()
+
     def __get_calendar(self):
         return self.service.calendarList().list().execute()
 
@@ -28,17 +29,20 @@ class GoogleCalendar:
         return self.service.calendarList().insert(
             body=calendar_list_entry).execute()
 
-    def _get_events(self, time_from: datetime, time_to: datetime, page_token: str) -> dict:
-        ic(page_token)
-        return self.service.events().list(
-            calendarId="kamanchi22@gmail.com",
-            singleEvents=True,
-            pageToken=page_token,
-            maxResults=250,
-            timeMin=time_from.isoformat() + "Z",
-            timeMax=time_to.isoformat() + "Z",
-            timeZone="Europe/Moscow",
-        ).execute()
+    # def _get_events(self, time_from: datetime, time_to: datetime,
+    #                 page_token: str) -> dict:
+    #     ic(self.service.events().list(
+    #         calendarId="kamanchi22@gmail.com",
+    #     ))
+    #     return self.service.events().list(
+    #         calendarId="kamanchi22@gmail.com",
+    #         singleEvents=True,
+    #         pageToken=page_token,
+    #         maxResults=250,
+    #         timeMin=time_from.isoformat() + "Z",
+    #         timeMax=time_to.isoformat() + "Z",
+    #         timeZone="Europe/Moscow",
+    #     ).execute()
 
     def _get_data(self, time_from: datetime, time_to: datetime) -> list[dict]:
         my_event = []
@@ -46,8 +50,15 @@ class GoogleCalendar:
         page_token = None
         while True:
             ic(page_token)
-            events = self._get_events(time_from, time_to, page_token=page_token)
-            ic()
+            events = self.service.events().list(
+                calendarId="kamanchi22@gmail.com",
+                singleEvents=True,
+                pageToken=page_token,
+                maxResults=250,
+                timeMin=time_from.isoformat() + "Z",
+                timeMax=time_to.isoformat() + "Z",
+                timeZone="Europe/Moscow",
+            ).execute()
             page_token = events.get('nextPageToken')
             my_events = events.get('items', [])
 
@@ -67,7 +78,8 @@ class GoogleCalendar:
                 break
         return my_event
 
-    def formatted_data(self, date_from=datetime.now() - timedelta(days=Constants.DAYS_TO_PLOT),
+    def formatted_data(self, date_from=datetime.now() - timedelta(
+        days=Constants.DAYS_TO_PLOT),
                        date_to=datetime.now(), ):
         many_days = {}
         ic(date_from, date_to)
