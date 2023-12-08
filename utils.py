@@ -3,8 +3,8 @@ import logging
 
 from icecream import ic
 
+from constants import Constants
 from exceptions import TokenError
-from price import Price
 
 logging.basicConfig(
     level=logging.INFO,
@@ -21,7 +21,7 @@ def is_in_price(name: str | None) -> bool:
     """
     if name is None:
         return False
-    for key, value in Price.cost.items():
+    for key, value in Constants.COST.items():
         if name.lower().startswith(key.lower()):
             return True
 
@@ -57,9 +57,9 @@ def get_cost(name: str | None) -> int:
     """
     if name is None:
         raise AttributeError("Не передано имя клиента..")
-    for key, value in Price.cost.items():
+    for key, value in Constants.COST.items():
         if name.lower().startswith(key.lower()):
-            return Price.cost.get(key)
+            return Constants.COST.get(key)
     raise AttributeError("Нет такого клиента в списке.")
 
 

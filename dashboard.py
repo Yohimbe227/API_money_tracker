@@ -1,11 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from bokeh.plotting import figure, output_file, show
-from bokeh.models import ColumnDataSource, DatetimeTickFormatter, Range1d, \
-    LinearAxis, FuncTickFormatter
-from icecream import ic
 
-from price import WEEKDAYS
+from constants import Constants
 
 
 class Plot:
@@ -32,7 +29,7 @@ class Plot:
         Returns:
             Список дат.
         """
-        return [str(day.month) + "-" + str(day.day) + " \n" + WEEKDAYS[
+        return [str(day.month) + "-" + str(day.day) + " \n" + Constants.WEEKDAYS[
             day.weekday()] for day in
                 self.bablo.keys()]
 
@@ -54,20 +51,14 @@ class Plot:
             width=self.height * 3,
             sizing_mode="scale_width",
         )
-        ic(self._get_days())
-        diagram.y_range.bounds = (0, 6000)
+        diagram.title.align = "center"
+        diagram.y_range.bounds = (0, Constants.MAX_INCOME)
         diagram.xaxis.axis_label = 'Дата'
         diagram.yaxis.axis_label = 'Доход'
         diagram.title.text_font_size = "20pt"
         diagram.xaxis.axis_label_text_font_size = "16pt"
         diagram.yaxis.axis_label_text_font_size = "16pt"
-        source = ColumnDataSource(
-            data=dict(x=self._get_days(), y=self._get_many()))
-        diagram.vbar(x=self._get_days(), top=self._get_many(), width=0.5,
+        diagram.vbar(x=self._get_days(), top=self._get_many(), width=0.8,
                      color="green",
                      )
-
         show(diagram)
-
-# widgets.interact(obj.update, days=(1, 5))
-# curdoc().add_root(obj.diagram)
