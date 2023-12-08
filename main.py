@@ -11,54 +11,41 @@ from utils import is_in_price, get_cost
 class GoogleCalendar:
 
     def __init__(self):
-        self.bablo = []
-        credentials = service_account.Credentials.from_service_account_file(
+        self.credentials = service_account.Credentials.from_service_account_file(
             filename=PrivateData.FILE_PATH, scopes=PrivateData.SCOPES
         )
-        ic(PrivateData.FILE_PATH)
-        self.service = build("calendar", "v3", credentials=credentials)
-        ic()
+        self.service = build("calendar", "v3", credentials=self.credentials)
 
     def __get_calendar(self):
         return self.service.calendarList().list().execute()
 
-    def __add_calendar(self, calendar_id):
+    def __add_calendar(self, calendar_id: str) -> dict:
         calendar_list_entry = {
             'id': calendar_id
         }
         return self.service.calendarList().insert(
             body=calendar_list_entry).execute()
 
-    # def _get_events(self, time_from: datetime, time_to: datetime,
-    #                 page_token: str) -> dict:
-    #     ic(self.service.events().list(
-    #         calendarId="kamanchi22@gmail.com",
-    #     ))
-    #     return self.service.events().list(
-    #         calendarId="kamanchi22@gmail.com",
-    #         singleEvents=True,
-    #         pageToken=page_token,
-    #         maxResults=250,
-    #         timeMin=time_from.isoformat() + "Z",
-    #         timeMax=time_to.isoformat() + "Z",
-    #         timeZone="Europe/Moscow",
-    #     ).execute()
+    def _get_events(self, time_from: datetime, time_to: datetime,
+                    page_token: str) -> dict:
+        ic(self.service.events().list(
+            calendarId="kamanchi22@gmail.com",
+        ))
+        return self.service.events().list(
+            calendarId="kamanchi22@gmail.com",
+            singleEvents=True,
+            pageToken=page_token,
+            maxResults=250,
+            timeMin=time_from.isoformat() + "Z",
+            timeMax=time_to.isoformat() + "Z",
+            timeZone="Europe/Moscow",
+        ).execute()
 
     def _get_data(self, time_from: datetime, time_to: datetime) -> list[dict]:
         my_event = []
-        ic()
         page_token = None
         while True:
-            ic(page_token)
-            events = self.service.events().list(
-                calendarId="kamanchi22@gmail.com",
-                singleEvents=True,
-                pageToken=page_token,
-                maxResults=250,
-                timeMin=time_from.isoformat() + "Z",
-                timeMax=time_to.isoformat() + "Z",
-                timeZone="Europe/Moscow",
-            ).execute()
+            events = self._get_events(time_from, time_to, page_token)
             page_token = events.get('nextPageToken')
             my_events = events.get('items', [])
 
@@ -82,7 +69,6 @@ class GoogleCalendar:
         days=Constants.DAYS_TO_PLOT),
                        date_to=datetime.now(), ):
         many_days = {}
-        ic(date_from, date_to)
         data = self._get_data(date_from, date_to)
         for value in data:
             start = datetime.fromisoformat(value.get("start", [])[0]).date()

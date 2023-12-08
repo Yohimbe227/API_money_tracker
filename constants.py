@@ -9,10 +9,9 @@ class PrivateData:
     def __setattr__(self, key, value):
         raise AttributeError(f"can't reassign constant '{value}'")
 
-    load_dotenv()
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     ID = int(os.getenv("TELEGRAM_TO"))
-    SCOPES = os.getenv("SCOPES")
+    SCOPES = [os.getenv("SCOPES")]
     FILE_PATH = os.getenv("FILE_PATH")
 
 

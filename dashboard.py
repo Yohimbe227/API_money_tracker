@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from bokeh.io import save
 from bokeh.plotting import figure, output_file, show
 
 from constants import Constants
@@ -61,4 +62,4 @@ class Plot:
         diagram.vbar(x=self._get_days(), top=self._get_many(), width=0.8,
                      color="green",
                      )
-        show(diagram)
+        save(diagram)
