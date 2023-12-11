@@ -44,9 +44,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
+          run: |
             cd /home
-            sudo rm .env.calendar
             sudo touch .env.calendar
 
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
