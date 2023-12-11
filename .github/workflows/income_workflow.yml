@@ -31,7 +31,7 @@ jobs:
           context: .
           push: true
           tags:
-            ${{ secrets.DOCKER_USERNAME }}/calendar_backend:v1
+            yohimbe/calendar_backend:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,5 +55,5 @@ jobs:
             echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env.calendar
             echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env.calendar
             
-            sudo docker compose pull yohimbe/calendar_backend:v1
+            sudo docker compose pull yohimbe/calendar_backend:latest
             sudo docker compose  -f /home/calendar/docker-compose.yaml up -d
