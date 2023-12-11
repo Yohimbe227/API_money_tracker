@@ -45,9 +45,6 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull yohimbe/calendar_backend:v1
-            sudo docker-compose stop
-            sudo docker-compose rm backend
             sudo rm .env
             touch .env
 
@@ -56,3 +53,6 @@ jobs:
             echo SCOPES=${{ secrets.SCOPES }} >> .env
             echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env
             echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env
+            
+            sudo docker compose pull yohimbe/calendar_backend:v1
+            sudo docker compose up -d
