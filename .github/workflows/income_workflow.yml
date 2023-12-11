@@ -45,14 +45,14 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo rm .env
-            touch .env
+            sudo rm .env.calendar
+            touch .env.calendar
 
-            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
-            echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env
-            echo SCOPES=${{ secrets.SCOPES }} >> .env
-            echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env
-            echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env
+            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
+            echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env.calendar
+            echo SCOPES=${{ secrets.SCOPES }} >> .env.calendar
+            echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env.calendar
+            echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env.calendar
             
             sudo docker compose pull yohimbe/calendar_backend:v1
             sudo docker compose up -d

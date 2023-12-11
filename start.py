@@ -11,7 +11,7 @@ from exceptions import TokenError
 from mycalendar import GoogleCalendar
 from utils import logger
 
-load_dotenv()
+load_dotenv('.env.calendar')
 
 calendar = GoogleCalendar()
 
