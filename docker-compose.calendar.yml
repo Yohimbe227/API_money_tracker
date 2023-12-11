@@ -1,8 +1,7 @@
 version: '3'
 services:
-  calendar_backend:
+  backend:
     image: yohimbe/calendar_backend:v1
-    restart: always
     environment:
       - PRIVATE_KEY=private.key
     env_file:
