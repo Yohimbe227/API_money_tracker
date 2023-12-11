@@ -15,5 +15,7 @@ COPY ./ /app
 WORKDIR /app
 
 LABEL author='Kamanin Y.N.' version=1.0
+RUN chmod +x start.py
+RUN pwd
 
 CMD ["python", "start.py" ]
