@@ -48,7 +48,7 @@ jobs:
             cd /home/calendar
             sudo rm .env.calendar
             sudo touch .env.calendar
-            sudo docker compose pull yohimbe/calendar_backend:v1
+            sudo docker compose pull backend
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
             echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env.calendar
             echo SCOPES=${{ secrets.SCOPES }} >> .env.calendar
