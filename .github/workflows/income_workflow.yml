@@ -44,7 +44,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }} 
           script: |
             sudo docker pull yohimbe/calendar_backend:v1
             sudo docker-compose stop
