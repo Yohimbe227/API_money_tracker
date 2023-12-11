@@ -5,6 +5,8 @@ services:
     restart: always
     environment:
       - PRIVATE_KEY=private.key
+    env_file:
+      - .env.calendar
     volumes:
       - ./private.key:/private.key
       - ./home/diagram/:/app
