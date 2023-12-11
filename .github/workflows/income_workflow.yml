@@ -45,6 +45,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            cd /home
             sudo rm .env.calendar
             sudo touch .env.calendar
 
