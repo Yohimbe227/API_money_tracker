@@ -13,7 +13,7 @@ RUN pip3 install -r /app/requirements.txt --no-cache-dir
 
 COPY ./ /app
 
-COPY ./key.json /app
+COPY ./home/key.json /app
  
 WORKDIR /app
 CMD ["python", "start.py" ]
