@@ -16,5 +16,4 @@ COPY ./ /app
 COPY ./key.json /app
  
 WORKDIR /app
-
 CMD ["python", "start.py" ]
