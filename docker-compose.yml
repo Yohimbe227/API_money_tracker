@@ -1,10 +1,19 @@
 version: '3'
 services:
-  calendar:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+  calendar_backend:
+    image: yohimbe/calendar_backend:v1
+    restart: always
     environment:
-      - KEY_JSON=${KEY_JSON}
+      - PRIVATE_KEY=private.key
+    volumes:
+      - ./private.key:/private.key
+
+#  nginx:
+#    image: nginx:1.18.0-alpine
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+#      - static_value:/var/html/static/
+#      - media_value:/var/html/media/
+
