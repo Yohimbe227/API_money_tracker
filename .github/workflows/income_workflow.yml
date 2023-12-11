@@ -46,7 +46,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo rm .env.calendar
-            touch .env.calendar
+            sudo touch .env.calendar
 
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
             echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env.calendar
