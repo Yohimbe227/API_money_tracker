@@ -5,9 +5,13 @@ services:
     image: yohimbe/calendar_backend:v2
     environment:
       - PRIVATE_KEY=key.json
-      -
-    env_file:
-      - .env.calendar
+      - TELEGRAM_TOKEN=6554711613:AAFpxdYy4YEzkiO4LfmGBjH-s7JlmXKvMQo
+      - TELEGRAM_TO=400425347
+      - SCOPES=https://www.googleapis.com/auth/calendar
+      - FILE_PATH=key.json
+      - CALENDAR_ID=kamanchi22@gmail.com
+#    env_file:
+#      - .env.calendar
     volumes:
       - ./key.json:/key.json
       - ./diagram:/app
