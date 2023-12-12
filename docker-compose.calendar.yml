@@ -8,7 +8,7 @@ services:
     env_file:
       - .env.calendar
     volumes:
-      - ./private.key:/private.key
+      - ./key.json:/key.json
       - ./diagram:/app
 
 #  nginx:
