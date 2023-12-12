@@ -14,4 +14,6 @@ COPY ./ /app
 
 WORKDIR /app
 
+CMD ["python", "start.py"]
+
 LABEL author='Kamanin Y.N.' version=1.0
