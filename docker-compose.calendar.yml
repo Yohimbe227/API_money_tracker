@@ -4,7 +4,7 @@ services:
   backend:
     image: yohimbe/calendar_backend:v1
     environment:
-      - PRIVATE_KEY=private.key
+      - PRIVATE_KEY=key.json
     env_file:
       - .env.calendar
     volumes:
