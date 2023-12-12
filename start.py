@@ -5,26 +5,20 @@ from http import HTTPStatus
 import requests
 from dotenv import load_dotenv
 
-from constants import Constants
+from constants import Constants, PrivateData
 from dashboard import Plot
-from exceptions import TokenError
 from mycalendar import GoogleCalendar
 from utils import logger
 
-load_dotenv('.env.calendar')
+load_dotenv(".env.calendar")
 
 calendar = GoogleCalendar()
 
 
-bot_token = os.getenv("TELEGRAM_TOKEN")
-if bot_token is None:
-    raise TokenError(bot_token)
-
-chat_id = os.getenv("TELEGRAM_TO")
-api_url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+api_url = f"https://api.telegram.org/bot{PrivateData.TELEGRAM_TOKEN}/sendMessage"
 payload = {
-    'chat_id': chat_id,
-    'text': calendar.to_message(
+    "chat_id": int(PrivateData.ID),
+    "text": calendar.to_message(
         datetime.now() - timedelta(days=Constants.DAYS_TO_MESSAGE),
         datetime.now(),
     ),

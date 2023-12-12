@@ -2,6 +2,9 @@ import os
 
 from dotenv import load_dotenv
 
+from exceptions import TokenError
+
+
 load_dotenv('.env.calendar')
 
 
@@ -10,7 +13,9 @@ class PrivateData:
         raise AttributeError(f"can't reassign constant '{value}'")
 
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-    ID = int(os.getenv("TELEGRAM_TO"))
+    ID = os.getenv("TELEGRAM_TO")
+    if None in (TELEGRAM_TOKEN, ID):
+        raise TokenError(TELEGRAM_TOKEN)
     SCOPES = [os.getenv("SCOPES")]
     FILE_PATH = os.getenv("FILE_PATH")
     CALENDAR_ID = os.getenv("CALENDAR_ID")
