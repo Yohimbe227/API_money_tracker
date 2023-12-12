@@ -14,8 +14,6 @@ COPY ./ /app
 
 WORKDIR /app
 
-ENTRYPOINT ["python", "start.py"]
-
 CMD ["tail", "-f", "/dev/null"]
 
 LABEL author='Kamanin Y.N.' version=1.0
