@@ -16,4 +16,4 @@ WORKDIR /app
 
 LABEL author='Kamanin Y.N.' version=1.0
 
-CMD ["python", "start.py"]
+CMD ["python3", "start.py"]
