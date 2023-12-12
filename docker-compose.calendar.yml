@@ -9,7 +9,7 @@ services:
       - .env.calendar
     volumes:
       - ./private.key:/private.key
-      - ./home/diagram:/app
+      - ./diagram:/app
 
 #  nginx:
 #    image: nginx:1.18.0-alpine
