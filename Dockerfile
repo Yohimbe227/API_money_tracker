@@ -14,8 +14,6 @@ COPY ./ /app
 
 WORKDIR /app
 
-RUN python3 start.py
-
 CMD ["gunicorn", "backend.wsgi:application", "--bind", "0:8000" ]
 
 LABEL author='Kamanin Y.N.' version=1.0
