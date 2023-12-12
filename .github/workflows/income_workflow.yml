@@ -55,4 +55,4 @@ jobs:
             echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env.calendar
             echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env.calendar
             sudo docker compose  -f /home/calendar/docker-compose.yaml up -d
-            sudo docker exex -T backend python start.py
+            sudo docker compose exex -T backend python start.py
