@@ -54,8 +54,8 @@ jobs:
             sudo rm .env.calendar
             sudo touch .env.calendar
             
-            sudo docker-compose stop backend
-            sudo docker-compose rm -f backend
+            sudo docker compose stop backend
+            sudo docker compose rm -f backend
             sudo docker compose pull backend
             
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
