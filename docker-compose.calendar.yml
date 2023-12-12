@@ -15,7 +15,7 @@ services:
     volumes:
       - ./key.json:/key.json
       - ./diagram:/app
-      - ./home/calendar/.env.calendar:/app/.env.calendar
+#      - ./home/calendar/.env.calendar:/app/.env.calendar
 
 
 #  nginx:
