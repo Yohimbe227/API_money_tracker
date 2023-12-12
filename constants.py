@@ -14,8 +14,6 @@ class PrivateData:
 
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     ID = os.getenv("TELEGRAM_TO")
-    if None in (TELEGRAM_TOKEN, ID):
-        raise TokenError(TELEGRAM_TOKEN)
     SCOPES = [os.getenv("SCOPES")]
     FILE_PATH = os.getenv("FILE_PATH")
     CALENDAR_ID = os.getenv("CALENDAR_ID")

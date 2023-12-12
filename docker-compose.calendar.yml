@@ -2,14 +2,16 @@ version: '3.3'
 
 services:
   backend:
-    image: yohimbe/calendar_backend:v1
+    image: yohimbe/calendar_backend:v2
     environment:
       - PRIVATE_KEY=key.json
     env_file:
-      - .env.calendar
+      - .env
     volumes:
       - ./key.json:/key.json
       - ./diagram:/app
+      - ./home/calendar/.env.calendar:/app/.env.calendar
+    command: cat /app/.env.calendar
 
 #  nginx:
 #    image: nginx:1.18.0-alpine
