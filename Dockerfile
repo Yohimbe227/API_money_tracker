@@ -12,6 +12,6 @@ RUN pip3 install -r ./requirements.txt --no-cache-dir
 
 COPY . .
 
-CMD ["tail", "-f", "/dev/null"]
+CMD ["sleep", "infinity"]
 
 LABEL author='Kamanin Y.N.' version=1.0
