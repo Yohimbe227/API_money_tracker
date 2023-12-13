@@ -15,13 +15,10 @@ jobs:
         id: encode
         run: |
           echo ${{ secrets.KEY_JSON }} | base64
-          ENCODED_KEY_JSON=`echo \*\*\* \
-          \*\*\* \
-          \*\*\* \
-          \*\*\* \
-          \*\*\* \
-          \*\*\* \ 
-          \*\*\* | base64`
+          ENCODED_KEY_JSON=`echo \\*\\*\\* \\\\  
+          \\*\\*\\* \\\\
+          \\*\\*\\* \\\\
+          \\*\\*\\* | base64`
       - name: Decode into JSON file
         run: |
           echo $ENCODED_KEY_JSON | base64 --decode > key.json
