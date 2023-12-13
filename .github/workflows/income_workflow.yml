@@ -13,7 +13,7 @@ jobs:
 
       - name: Copy secret key to repository
         run: |
-          printf "$${{ secrets.KEY_JSON}}" > key.json
+          echo -n "${{ secrets.KEY_JSON}}" > key.json
           cat <<< "${{ secrets.KEY_JSON }}" > key2.json
 
       - name: Set up Docker Buildx
