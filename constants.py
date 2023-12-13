@@ -5,18 +5,26 @@ from dotenv import load_dotenv
 from exceptions import TokenError
 
 
-load_dotenv('.env.calendar')
+load_dotenv(".env.calendar")
 
 
 class PrivateData:
     def __setattr__(self, key, value):
         raise AttributeError(f"can't reassign constant '{value}'")
 
-    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-    ID = os.getenv("TELEGRAM_TO")
-    SCOPES = [os.getenv("SCOPES")]
-    FILE_PATH = os.getenv("FILE_PATH")
-    CALENDAR_ID = os.getenv("CALENDAR_ID")
+    @staticmethod
+    def _check_value(value, name):
+        if value is None:
+            raise ValueError(f"{name} не найден в .env")
+        return value
+
+    TELEGRAM_TOKEN = _check_value(
+        os.getenv("TELEGRAM_TOKEN"), "TELEGRAM_TOKEN"
+    )
+    ID = _check_value(os.getenv("ID"), "ID")
+    SCOPES = [_check_value(os.getenv("SCOPES"), "SCOPES")]
+    FILE_PATH = _check_value(os.getenv("FILE_PATH"), "FILE_PATH")
+    CALENDAR_ID = _check_value(os.getenv("CALENDAR_ID"), "CALENDAR_ID")
 
 
 class Constants:

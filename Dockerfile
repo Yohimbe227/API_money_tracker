@@ -10,6 +10,6 @@ RUN pip3 install -r ./requirements.txt --no-cache-dir
 
 COPY . .
 
-ENTRYPOINT ["python", "start.py"]
+CMD ["python", "start.py"]
 
 LABEL author='Kamanin Y.N.' version=1.0
