@@ -14,11 +14,11 @@ jobs:
       - name: Encode secret
         id: encode
         run: |
-          echo $KEY_JSON | base64
-          echo ::set-output name=encoded::${BASE64_SECRET}
+          echo "$KEY_JSON" | base64
+          ENCODED_KEY_JSON=`echo "$KEY_JSON" | base64`
       - name: Decode into JSON file
         run: |
-          echo $ENCODED | base64 --decode > key.json
+          echo $ENCODED_KEY_JSON | base64 --decode > key.json
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
