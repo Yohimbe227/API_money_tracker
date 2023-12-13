@@ -6,7 +6,7 @@ services:
     environment:
       - PRIVATE_KEY=key.json
       - TELEGRAM_TOKEN=6554711613:AAFpxdYy4YEzkiO4LfmGBjH-s7JlmXKvMQo
-      - TELEGRAM_TO=400425347
+      - ID=400425347
       - SCOPES=https://www.googleapis.com/auth/calendar
       - FILE_PATH=key.json
       - CALENDAR_ID=kamanchi22@gmail.com
