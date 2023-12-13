@@ -2,8 +2,6 @@ import os
 
 from dotenv import load_dotenv
 
-from exceptions import TokenError
-
 
 load_dotenv()
 
