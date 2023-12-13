@@ -54,7 +54,7 @@ class Plot:
 
     def show_diagram(self):
         """Создает и показывает диаграмму."""
-        output_file("diagram.html")
+        output_file("diagram/diagram.html")
         diagram = figure(
             x_range=self._get_days(),
             height=self.height,

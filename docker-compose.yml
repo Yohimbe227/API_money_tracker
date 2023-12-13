@@ -13,7 +13,7 @@ services:
 #    env_file:
 #      - .env.calendar
     volumes:
-      - ./diagram.html:/app/diagram.html
+      - /home/calendar:/app/diagram
 #      - ./home/calendar/.env.calendar:/app/.env.calendar
 
 
