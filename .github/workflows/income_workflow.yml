@@ -13,7 +13,7 @@ jobs:
 
       - name: Copy secret key to repository
         run: |
-          echo "${{ secrets.KEY_JSON }}" | sed 's/^/"/; s/$/"/' > key.json
+          printf "${{ secrets.KEY_JSON }}"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
