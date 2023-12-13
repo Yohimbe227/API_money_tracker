@@ -14,7 +14,7 @@ services:
 #      - .env.calendar
     volumes:
 #      - ./key.json:/key.json
-      - ./diagram/diagram.html:/app/diagram.html
+      - ./diagram:/app
 #      - ./home/calendar/.env.calendar:/app/.env.calendar
 
 
