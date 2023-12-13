@@ -1,5 +1,4 @@
 name: calendar_income workflow
-
 on: [ push ]
 
 jobs:
