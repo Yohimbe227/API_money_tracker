@@ -56,5 +56,5 @@ jobs:
             #            echo SCOPES=${{ secrets.SCOPES }} >> .env.calendar
             #            echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env.calendar
             #            echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env.calendar
-            sudo docker compose  -f /home/calendar/docker-compose.calendar.yml up -d
+            sudo docker compose up -d
             #            sudo docker compose exex -T backend python start.py  
