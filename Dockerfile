@@ -10,6 +10,8 @@ RUN pip3 install -r ./requirements.txt --no-cache-dir
 
 COPY . .
 
-CMD ["python", "start.py"]
+ENTRYPOINT ["python", "start.py"]
+
+CMD ["sleep", "infinity"]
 
 LABEL author='Kamanin Y.N.' version=1.0
