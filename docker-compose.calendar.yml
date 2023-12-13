@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  backend:
+  income:
     image: yohimbe/calendar_backend:v2
     environment:
       - PRIVATE_KEY=key.json

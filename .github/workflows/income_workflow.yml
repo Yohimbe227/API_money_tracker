@@ -14,7 +14,7 @@ jobs:
 
       - name: Copy secret key to repository
         run: |
-          echo "${{ secrets.PRIVATE_KEY }}" > private.key
+          echo "${{ secrets.KEY_JSON}}" > key.json
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -54,9 +54,9 @@ jobs:
             sudo rm .env.calendar
             sudo touch .env.calendar
             
-            sudo docker compose stop backend
-            sudo docker compose rm -f backend
-            sudo docker compose pull backend
+            sudo docker compose stop income
+            sudo docker compose rm -f income
+            sudo docker compose pull income
             
             echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
             echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env.calendar
