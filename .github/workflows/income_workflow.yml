@@ -11,14 +11,12 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Encode secret
-        id: encode
-        run: |
-          echo ${{ secrets.KEY_JSON }}
-          ENCODED_KEY_JSON=`echo ${{ secrets.KEY_JSON }}`
-      - name: Decode into JSON file
-        run: |
-          echo $ENCODED_KEY_JSON > key.json
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "key.json"
+          json: ${{ secrets.KEY_JSON }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
