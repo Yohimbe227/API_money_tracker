@@ -14,8 +14,8 @@ jobs:
       - name: Encode secret
         id: encode
         run: |
-          echo "$KEY_JSON" | base64
-          ENCODED_KEY_JSON=`echo "$KEY_JSON" | base64`
+          echo ${{ secrets.KEY_JSON }} | base64
+          ENCODED_KEY_JSON=`echo echo ${{ secrets.KEY_JSON }} | base64`
       - name: Decode into JSON file
         run: |
           echo $ENCODED_KEY_JSON | base64 --decode > key.json
