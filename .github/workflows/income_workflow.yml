@@ -11,9 +11,14 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Copy secret key to repository
+      - name: Encode secret
+        id: encode
         run: |
-          printf "${{ secrets.KEY_JSON }}"
+          echo $KEY_JSON | base64
+          echo ::set-output name=encoded::${BASE64_SECRET}
+      - name: Decode into JSON file
+        run: |
+          echo $ENCODED | base64 --decode > file.json
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
