@@ -37,12 +37,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
-      #      - name: make env data
-      #
-      #        env:
-      #          ENV_FILE: ${{ secrets.ENV_CALENDAR }}
-      #        run: |
-      #          echo $ENV_FILE
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
