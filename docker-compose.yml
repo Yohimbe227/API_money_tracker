@@ -12,10 +12,11 @@ services:
       - CALENDAR_ID=kamanchi22@gmail.com
 #    env_file:
 #      - .env.calendar
-    volumes:
-      - /home/calendar:/app/diagram
+#    volumes:
+#      - /home/calendar:/app/diagram
 #      - ./home/calendar/.env.calendar:/app/.env.calendar
-
+  copy_diagram:
+    command: docker run -d --name income_copy income
 
 #  nginx:
 #    image: nginx:1.18.0-alpine
