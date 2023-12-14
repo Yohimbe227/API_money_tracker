@@ -16,11 +16,11 @@ services:
 #    volumes:
 #      - /home/calendar:/app/diagram
 #      - ./home/calendar/.env.calendar:/app/.env.calendar
-  nginx:
-    image: nginx:1.18.0-alpine
+  diagram_nginx:
+    image: nginx:alpine
+    volumes:
+      - /home/calendar:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8001:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - income
+    restart: always
