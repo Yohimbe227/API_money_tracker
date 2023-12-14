@@ -3,24 +3,15 @@ version: '3.3'
 services:
   income:
     image: yohimbe/calendar_backend:v2
-    environment:
-      - PRIVATE_KEY=key.json
-      - TELEGRAM_TOKEN=6554711613:AAFpxdYy4YEzkiO4LfmGBjH-s7JlmXKvMQo
-      - ID=400425347
-      - SCOPES=https://www.googleapis.com/auth/calendar
-      - FILE_PATH=key.json
-      - CALENDAR_ID=kamanchi22@gmail.com
 
-#    env_file:
-#      - .env.calendar
-#    volumes:
-#      - /home/calendar:/app/diagram
-#      - ./home/calendar/.env.calendar:/app/.env.calendar
+    env_file:
+      - .env.calendar
+
   nginx:
     image: nginx:alpine
     volumes:
-      - home/calendar:/usr/share/nginx/html
-      - home/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./:/usr/share/nginx/html
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - "80:80"
+      - "8080:80"
     restart: always
