@@ -3,9 +3,8 @@ version: '3.3'
 services:
   income:
     image: yohimbe/calendar_backend:v2
-
     env_file:
-      - .env.calendar
+      - .env
 
   nginx:
     image: nginx:alpine

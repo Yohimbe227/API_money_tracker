@@ -47,8 +47,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/calendar
-            sudo rm .env.calendar
-            sudo touch .env.calendar
+            sudo rm .env
+            sudo touch .env
             
             sudo docker compose rm -f income
             sudo docker compose pull income
