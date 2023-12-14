@@ -62,4 +62,3 @@ jobs:
             sudo docker compose exec -T income python start.py
             sudo docker cp calendar-income-1:/app/diagram/diagram.html /home/calendar/diagram.html
             sudo docker compose stop income
-            #            sudo docker compose exex -T backend python start.py  
