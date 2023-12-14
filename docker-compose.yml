@@ -16,7 +16,7 @@ services:
 #    volumes:
 #      - /home/calendar:/app/diagram
 #      - ./home/calendar/.env.calendar:/app/.env.calendar
-  diagram_nginx:
+  nginx:
     image: nginx:alpine
     volumes:
       - /home/calendar:/usr/share/nginx/html
