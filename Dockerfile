@@ -12,6 +12,6 @@ COPY . .
 
 ENTRYPOINT ["python", "start.py"]
 
-CMD ["sleep", "infinity"]
+CMD ["tail", "-f", "/dev/null"]
 
 LABEL author='Kamanin Y.N.' version=1.0
