@@ -10,7 +10,7 @@ RUN pip3 install -r ./requirements.txt --no-cache-dir
 
 COPY . .
 
-ENTRYPOINT ["python", "start.py"]
+RUN python start.py
 
 CMD ["tail", "-f", "/dev/null"]
 
