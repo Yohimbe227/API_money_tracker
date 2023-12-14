@@ -53,7 +53,8 @@ jobs:
             sudo docker compose stop income
             sudo docker compose rm -f income
             sudo docker compose pull income
-            
+            sudo docker exec -it calendar-income-1 python start.py
+            sudo docker cp calendar-income-1:/app/diagram/diagram.html /home/calendar/diagram.html
             #            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
             #            echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env.calendar
             #            echo SCOPES=${{ secrets.SCOPES }} >> .env.calendar
