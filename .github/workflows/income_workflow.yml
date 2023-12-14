@@ -59,6 +59,6 @@ jobs:
             #            echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env.calendar
             #            echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env.calendar
             sudo docker compose up -d
-            sudo docker exec -it calendar-income-1 python start.py
+            sudo docker compose exec -T income python start.py
             sudo docker cp calendar-income-1:/app/diagram/diagram.html /home/calendar/diagram.html
             #            sudo docker compose exex -T backend python start.py  
