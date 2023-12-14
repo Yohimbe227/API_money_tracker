@@ -53,12 +53,12 @@ jobs:
             sudo docker compose stop income
             sudo docker compose rm -f income
             sudo docker compose pull income
-            sudo docker exec -it calendar-income-1 python start.py
-            sudo docker cp calendar-income-1:/app/diagram/diagram.html /home/calendar/diagram.html
             #            echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env.calendar
             #            echo TELEGRAM_TO=${{ secrets.TELEGRAM_TO }} >> .env.calendar
             #            echo SCOPES=${{ secrets.SCOPES }} >> .env.calendar
             #            echo FILE_PATH=${{ secrets.FILE_PATH }} >> .env.calendar
             #            echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env.calendar
             sudo docker compose up -d
+            sudo docker exec -it calendar-income-1 python start.py
+            sudo docker cp calendar-income-1:/app/diagram/diagram.html /home/calendar/diagram.html
             #            sudo docker compose exex -T backend python start.py  
