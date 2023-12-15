@@ -54,7 +54,7 @@ class Plot:
 
     def show_diagram(self):
         """Создает и показывает диаграмму."""
-        output_file("diagram/diagram.html")
+        output_file("diagram/diagram.html", title="Динамика доходов за месяц")
         diagram = figure(
             x_range=self._get_days(),
             height=self.height,
@@ -65,7 +65,7 @@ class Plot:
         diagram.title.align = "center"
         diagram.y_range.bounds = (0, Constants.MAX_INCOME)
         diagram.xaxis.axis_label = 'Дата'
-        diagram.yaxis.axis_label = 'Доход'
+        diagram.yaxis.axis_label = 'Доход, руб.'
         diagram.title.text_font_size = "20pt"
         diagram.xaxis.axis_label_text_font_size = "16pt"
         diagram.yaxis.axis_label_text_font_size = "16pt"
