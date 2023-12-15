@@ -10,7 +10,7 @@ from dashboard import Plot
 from mycalendar import GoogleCalendar
 from utils import logger
 
-load_dotenv(".env.calendar")
+load_dotenv("infra/.env.calendar")
 
 calendar = GoogleCalendar()
 
