@@ -112,6 +112,6 @@ class GoogleCalendar:
         self,
         date_from: datetime,
         date_to: datetime,
-    ) -> int:
+    ) -> str:
         """Возвращает сумму доходов."""
-        return sum(self.formatted_data(date_from, date_to).values())
+        return str(sum(self.formatted_data(date_from, date_to).values()))

@@ -1,4 +1,3 @@
-import os
 from datetime import datetime, timedelta
 from http import HTTPStatus
 
@@ -15,13 +14,17 @@ load_dotenv("infra/.env.calendar")
 calendar = GoogleCalendar()
 
 
-api_url = f"https://api.telegram.org/bot{PrivateData.TELEGRAM_TOKEN}/sendMessage"
+api_url = (
+    f"https://api.telegram.org/bot{PrivateData.TELEGRAM_TOKEN}/sendMessage"
+)
 payload = {
     "chat_id": int(PrivateData.ID),
-    "text": calendar.to_message(
+    "text": "Ваш доход за прошедшую неделю составил: "
+    + calendar.to_message(
         datetime.now() - timedelta(days=Constants.DAYS_TO_MESSAGE),
         datetime.now(),
-    ),
+    )
+    + " руб.",
 }
 
 diagram = Plot(

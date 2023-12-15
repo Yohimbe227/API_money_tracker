@@ -12,10 +12,11 @@ logger = logging.getLogger(__name__)
 
 
 def is_in_price(name: str | None) -> bool:
-    """Check if name is in price
+    """Check if name is in price.
 
     Args:
         name: Name of event.
+
     """
     if name is None:
         return False
