@@ -53,7 +53,18 @@ class Plot:
         return list(self.bablo.values())
 
     def show_diagram(self):
-        """Создает и показывает диаграмму."""
+        """Сохраняет диаграмму."""
+        diagram = self.create_diagram()
+        diagram.vbar(
+            x=self._get_days(),
+            top=self._get_many(),
+            width=0.8,
+            color="green",
+        )
+        save(diagram)
+
+    def create_diagram(self):
+        """Создает диаграмму."""
         output_file("diagram/diagram.html", title="Динамика доходов за месяц")
         diagram = figure(
             x_range=self._get_days(),
@@ -69,10 +80,5 @@ class Plot:
         diagram.title.text_font_size = "20pt"
         diagram.xaxis.axis_label_text_font_size = "16pt"
         diagram.yaxis.axis_label_text_font_size = "16pt"
-        diagram.vbar(
-            x=self._get_days(),
-            top=self._get_many(),
-            width=0.8,
-            color="green",
-        )
-        save(diagram)
+        return diagram
+

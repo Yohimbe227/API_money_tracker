@@ -102,7 +102,7 @@ class GoogleCalendar:
             many_days[start] = many_days.get(start, 0) + get_cost(
                 value.get("summary")
             )
-
+            # Добавляем нулевой доход по воскресеньям
             if start.weekday() == 5:
                 many_days[start + timedelta(days=1)] = 0
 
