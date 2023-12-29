@@ -6,7 +6,6 @@ services:
 
     env_file:
       - .env.calendar
-
   nginx:
     image: nginx:alpine
     volumes:
