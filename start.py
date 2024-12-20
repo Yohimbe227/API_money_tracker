@@ -27,6 +27,7 @@ payload = {
     + " руб.",
 }
 
+
 diagram = Plot(
     date_from=datetime.now() - timedelta(days=Constants.DAYS_TO_PLOT),
     date_to=datetime.now(),
